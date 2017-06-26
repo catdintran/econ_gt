@@ -137,8 +137,8 @@ function call_Datamap(){
 	            datamap.svg.selectAll("g").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 	        };
 		datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
-			    console.log(geography.properties.name );
-			    console.log(geography.id);
+			    console.log(d['geography.id']['gross domestic product, current prices'] );
+			    console.log(d['geography.id']['gross domestic product based on purchasing-power-parity (ppp) valuation of country gdp']);
 			var gdp = dc.numberDisplay("#gdp");
 			var ppp = dc.numberDisplay("#ppp");
 			gdp
