@@ -140,18 +140,18 @@ function call_Datamap(){
 	        };
 		datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
 
-			    console.log(json['geography.id']['gross domestic product, current prices'] );
-			    console.log(json['geography.id']['gross domestic product based on purchasing-power-parity (ppp) valuation of country gdp']);
+		//	    console.log(json['geography.id']['gross domestic product, current prices'] );
+		//	    console.log(json['geography.id']['gross domestic product based on purchasing-power-parity (ppp) valuation of country gdp']);
 			var gdp = dc.numberDisplay("#gdp");
 			var ppp = dc.numberDisplay("#ppp");
 			gdp
 				.formatNumber(d3.format("d"))
-				.valueAccessor(function(d){return json['geography.id']['gross domestic product, current prices']; });
+				.valueAccessor(function(d){return 123; });
 			//	.group(all);
 
 			ppp
 				.formatNumber(d3.format("d"))
-				.valueAccessor(function(d){return json['geography.id']['gross domestic product based on purchasing-power-parity (ppp) valuation of country gdp']; });
+				.valueAccessor(function(d){return 456; });
 			//	.group(totalDonations)
 				
 		});
