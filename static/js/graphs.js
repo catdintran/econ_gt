@@ -144,17 +144,21 @@ function call_Datamap(){
 		//	    console.log(json['geography.id']['gross domestic product based on purchasing-power-parity (ppp) valuation of country gdp']);
 			var gdp = dc.numberDisplay("#gdp");
 			var ppp = dc.numberDisplay("#ppp");
-			gdp
-				.formatNumber(d3.format("d"))
-				.valueAccessor(function(d){return 123; });
-			//	.group(all);
+			$.ajax({
+			    type: 'POST',
+			    url: '/get_gdp',
+			    data: JSON.stringify({'id' : geography.id}),
+			    contentType: "application/json; charset=utf-8",            
+			    success: function(data) {
+				
+				$("#gdp").text(data['gdp']);
+				$("#ppp").text(data['ppp']);
 
-			ppp
-				.formatNumber(d3.format("d"))
-				.valueAccessor(function(d){return 456; });
-			//	.group(totalDonations)
-			
-			 dc.renderAll();
+			    },
+			    error: function(error) {
+				console.log(error);
+			    }
+			});
 				
 		});
 		
