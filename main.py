@@ -38,7 +38,7 @@ def donorschoose_projects():
     return json_projects
 
 @app.route("/get_gdp")
-def /get_gdp():
+def get_gdp():
     countryId = request.json['id']
     gdp = gdps[countryId]['gross domestic product, current prices']
     ppp = gdps[countryId]['gross domestic product based on purchasing-power-parity (ppp) valuation of country gdp']
