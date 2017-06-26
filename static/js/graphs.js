@@ -150,7 +150,7 @@ function call_Datamap(){
 			    data: JSON.stringify({'id' : geography.id}),
 			    contentType: "application/json; charset=utf-8",            
 			    success: function(data) {
-				
+				console.log(data);
 				$("#gdp").text(data['gdp']);
 				$("#ppp").text(data['ppp']);
 
