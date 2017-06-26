@@ -115,3 +115,39 @@ function makeGraphs(error, projectsJson, statesJson) {
     dc.renderAll();
 
 };
+
+function call_Datamap(){
+	new Datamap({
+	    element: document.getElementById('datamap'),
+	    projection: 'mercator', // big world map
+	    // countries don't listed in dataset will be painted with this color
+	    fills: { defaultFill: '#F5F5F5' },
+	   
+	    geographyConfig: {
+	        borderColor: '#DEDEDE',
+	        highlightBorderWidth: 2,
+	        
+	        // only change border
+	        highlightBorderColor: '#B7B7B7',
+	        // show desired information in tooltip
+	        popupTemplate: function(geo, data) {
+	        	return '<div class="hoverinfo"><strong>' + geo.properties.name + '</strong></div>';
+	        	/*
+	            // tooltip content
+	            return ['<div class="hoverinfo">',
+	                '<strong>', geo.properties.name, '</strong>',
+	                '<br>Count: <strong>', data.numberOfThings, '</strong>',
+	                '</div>'].join('');
+	        	*/
+	        }
+	    },
+	    done: function(datamap){
+	        datamap.svg.call(d3.behavior.zoom().on("zoom", redraw));
+	        function redraw() {
+	            datamap.svg.selectAll("g").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+	        }
+	    }
+	});
+	
+	
+}
