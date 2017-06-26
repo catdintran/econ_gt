@@ -1,0 +1,5 @@
+
+sudo rm /var/lib/mongodb/mongod.lock
+
+sudo sudo service mongod restart
+
