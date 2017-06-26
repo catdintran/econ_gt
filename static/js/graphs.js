@@ -153,9 +153,11 @@ function call_Datamap(){
 				.formatNumber(d3.format("d"))
 				.valueAccessor(function(d){return 456; });
 			//	.group(totalDonations)
+			
+			 dc.renderAll();
 				
 		});
-		 dc.renderAll();
+		
     
 	  }
 	});
