@@ -143,7 +143,7 @@ function call_Datamap(){
 	            datamap.svg.selectAll("g").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
 	        };
 		datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
-			    alert(geography.properties.name);
+			    console.log(geography.properties.name + ' ' + geography.properties.id);
 		});
 	    }
 	});
