@@ -138,17 +138,17 @@ function call_Datamap(){
 	        };
 		datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
 			    console.log(geography.properties.name );
-			    console.log(geography.properties.id);
+			    console.log(geography.id);
 			var gdp = dc.numberDisplay("#gdp");
 			var ppp = dc.numberDisplay("#ppp");
 			gdp
 				.formatNumber(d3.format("d"))
-				.valueAccessor(function(d){return d['geography.properties.id']['gross domestic product, current prices']; });
+				.valueAccessor(function(d){return d['geography.id']['gross domestic product, current prices']; });
 			//	.group(all);
 
 			ppp
 				.formatNumber(d3.format("d"))
-				.valueAccessor(function(d){return d['geography.properties.id']['gross domestic product based on purchasing-power-parity (ppp) valuation of country gdp']; });
+				.valueAccessor(function(d){return d['geography.id']['gross domestic product based on purchasing-power-parity (ppp) valuation of country gdp']; });
 			//	.group(totalDonations)
 				
 		});
