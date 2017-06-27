@@ -3,3 +3,6 @@ sudo rm /var/lib/mongodb/mongod.lock
 
 sudo sudo service mongod restart
 
+#find by keyCode:
+#db.econFinal.find({},{FRA:1})
+
