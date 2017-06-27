@@ -120,16 +120,12 @@ function call_Datamap(){
 	        
 	        // only change border
 	        highlightBorderColor: '#B7B7B7',
+		
+		highlightFillColor: '#FC8D59',    
+		    
 	        // show desired information in tooltip
 	        popupTemplate: function(geo, data) {
-	        	return '<div class="hoverinfo"><strong>' + geo.properties.name + '</strong></div>';
-	        	/*
-	            // tooltip content
-	            return ['<div class="hoverinfo">',
-	                '<strong>', geo.properties.name, '</strong>',
-	                '<br>Count: <strong>', data.numberOfThings, '</strong>',
-	                '</div>'].join('');
-	        	*/
+	        	return '<div class="hoverinfo"><strong>' + geo.properties.name + '</strong></div>';	        
 	        }
 	    },
 	    done: function(datamap){
