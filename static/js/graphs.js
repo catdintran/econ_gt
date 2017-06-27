@@ -121,7 +121,7 @@ function call_Datamap(){
 	        // only change border
 	        highlightBorderColor: '#B7B7B7',
 		
-		highlightFillColor: '#FC8D59',    
+	//	highlightFillColor: '#FC8D59',    
 		    
 	        // show desired information in tooltip
 	        popupTemplate: function(geo, data) {
