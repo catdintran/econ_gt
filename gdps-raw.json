@@ -39,3 +39,24 @@ for i, e in enumerate(dlist):
 
 import json
 print(json.dumps(d))
+
+
+data = json.load(open('imfFinal.json'))
+rootMaster = {}
+for code in countryCodes:
+  root = {code : {}}
+  root[code].update({'country': data[code]['country']})
+  
+  for e in data[code]['content']:
+    title = e['head']
+    doc = nlp(e['tail'])
+    root[code].update({ title : {} })
+    for ent in doc.ents:
+      if ent.label_ in root[code][title].keys():
+        root[code][title][ent.label_].append(' '.join(t.orth_ for t in ent))
+      else:
+        root[code][title].update({ent.label_ : [' '.join(t.orth_ for t in ent )] })
+    
+    print '%s > %s > %s ' % (code, data[code]['country'], title)
+  rootMaster.update(root)
+  
