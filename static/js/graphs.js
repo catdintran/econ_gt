@@ -151,8 +151,8 @@ function call_Datamap(){
 			   $("#gdp").css({"font-size":"25px","color":"#777", "float" : "right"});
 			$("#ppp").text('$ ' +gdps[geography.id]['gross domestic product based on purchasing-power-parity (ppp) valuation of country gdp']);
 			   $("#ppp").css({"font-size":"25px","color":"#777", "float" : "right"});	
-			
-			return '<div class="hoverinfo"><strong>' + geo.properties.name + '</strong></div>';
+			console.log(geography);
+			return '<div class="hoverinfo"><strong>' + geography.properties.name + '</strong></div>';
 			
 			dc.renderAll();
 				
