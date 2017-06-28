@@ -1,16 +1,16 @@
 queue()
     .defer(d3.json, "/donorschoose/projects")
-  //  .defer(d3.json, "static/geojson/countries.geo.json")	
-    .await(makeGraphs);
+    .await(makeGraphs)
+    .await(call_Datamap);
 
 
 
 
 function makeGraphs(error, projectsJson, statesJson) {	
 	//Clean projectsJson data
-	var donorschooseProjects = projectsJson;
+	var donorschooseProjects = projectsJson['donor'];
 	var dateFormat = d3.time.format("%Y-%m-%d %H:%M:%S");
-	console.log(donorschooseProjects);
+	
 	donorschooseProjects.forEach(function(d) {
 		d["date_posted"] = dateFormat.parse(d["date_posted"]);
 		d["date_posted"].setDate(1);
@@ -110,9 +110,18 @@ function makeGraphs(error, projectsJson, statesJson) {
 
 
 
-function call_Datamap(){
+function call_Datamap(error, imfFinal, statesJson){
+	
+	var imfFinal = imfFinal['imf'];
 	
 	
+	var ndx = crossfilter(imfFinal);
+	
+	var imfName = ndx.dimension(function(d) { return d.country;});
+	var headers = ndx.dimension(function(d) { var headers =[];
+						 d.content.forEach(function(e) {   headers.push(e.head);   });
+						 return headers; }
+				    
 	new Datamap({
 	    element: document.getElementById('datamap'),
 	    projection: 'mercator', // big world map
@@ -152,9 +161,7 @@ function call_Datamap(){
 			$("#ppp").text('$ ' +gdps[geography.id]['gross domestic product based on purchasing-power-parity (ppp) valuation of country gdp']);
 			   $("#ppp").css({"font-size":"25px","color":"#777", "float" : "right"});	
 			
-			console.log(datamap.svg);
-			console.log(datamap.svg.path);
-			console.log(datamap.svg.path.class(geography.id));
+			
 		//	selected-datamap = datamap.svg.path.class(geography.id);
 			
 			dc.renderAll();
