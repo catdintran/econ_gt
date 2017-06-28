@@ -112,9 +112,9 @@ function makeGraphs(error, projectsJson, statesJson) {
 
 
 
-function call_Datamap(error, imfFinal, statesJson){
+function call_Datamap(error, projectsJson, statesJson){
 	
-	var imfFinal = imfFinal['imf'];
+	var imfFinal = projectsJson['imf'];
 	console.log(imfFinal);
 	
 	var ndx = crossfilter(imfFinal);
