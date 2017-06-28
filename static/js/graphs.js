@@ -1,5 +1,6 @@
 queue()
     .defer(d3.json, "/donorschoose/projects")
+    .defer(d3.json, "static/geojson/countries.geo.json")	
     .await(makeGraphs);
 
 function makeGraphs(error, projectsJson, statesJson) {	
@@ -81,25 +82,25 @@ function makeGraphs(error, projectsJson, statesJson) {
 	usChart.width(1000)
 		.height(400)
 		.dimension(stateDim);
-//		.group(totalDonationsByState)
-//		.colors(["#E2F2FF", "#C4E4FF", "#9ED2FF", "#81C5FF", "#6BBAFF", "#51AEFF", "#36A2FF", "#1E96FF", "#0089FF", "#0061B5"])
-//		.colorDomain([0, max_state])
-//		.overlayGeoJson(statesJson["features"], "Country", function (d) {
-//			return d.properties.name;
-//		})
-//		.projection(d3.geo.mercator()
-//    				.center([0,40])
-//				.scale(100)
-//				.rotate([-12,0]))
+		.group(totalDonationsByState)
+		.colors(["#E2F2FF", "#C4E4FF", "#9ED2FF", "#81C5FF", "#6BBAFF", "#51AEFF", "#36A2FF", "#1E96FF", "#0089FF", "#0061B5"])
+		.colorDomain([0, max_state])
+		.overlayGeoJson(statesJson["features"], "Country", function (d) {
+			return d.properties.name;
+		})
+		.projection(d3.geo.mercator()
+    			//	.center([0,40])
+				.scale(100)
+				.rotate([-12,0]))
 /*		.projection(d3.geo.albersUsa()
     				.scale(600)
     				.translate([340, 150]))
-		.title(function (p) {
+*/		.title(function (p) {
 			return "Country: " + p["key"]
 					+ "\n";
 		//			+ "Total Donations: " + Math.round(p["value"]) + " $";
 		})
-*/
+
     dc.renderAll();
 
 };
