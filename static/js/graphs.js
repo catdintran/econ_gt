@@ -4,7 +4,7 @@ queue()
     .await(makeGraphs);
 
 
-var selected-datamap;
+
 
 function makeGraphs(error, projectsJson, statesJson) {	
 	//Clean projectsJson data
@@ -155,7 +155,7 @@ function call_Datamap(){
 			console.log(datamap.svg);
 			console.log(datamap.svg.path);
 			console.log(datamap.svg.path.class(geography.id));
-			selected-datamap = datamap.svg.path.class(geography.id);
+		//	selected-datamap = datamap.svg.path.class(geography.id);
 			
 			dc.renderAll();
 				
