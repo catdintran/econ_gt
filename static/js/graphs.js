@@ -122,7 +122,7 @@ function call_Datamap(error, imfFinal, statesJson){
 	var imfName = ndx.dimension(function(d) { return d.country;});
 	var headers = ndx.dimension(function(d) { var headers =[];
 						 d.content.forEach(function(e) {   headers.push(e.head);   });
-						 return headers; }
+						 return headers; });
 				    
 	new Datamap({
 	    element: document.getElementById('datamap'),
