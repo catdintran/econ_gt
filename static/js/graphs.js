@@ -9,6 +9,8 @@ queue()
 function makeGraphs(error, projectsJson, statesJson) {	
 	//Clean projectsJson data
 	var donorschooseProjects = projectsJson['donor'];
+	console.log(donorschooseProjects);
+	
 	var dateFormat = d3.time.format("%Y-%m-%d %H:%M:%S");
 	
 	donorschooseProjects.forEach(function(d) {
@@ -113,7 +115,7 @@ function makeGraphs(error, projectsJson, statesJson) {
 function call_Datamap(error, imfFinal, statesJson){
 	
 	var imfFinal = imfFinal['imf'];
-	
+	console.log(imfFinal);
 	
 	var ndx = crossfilter(imfFinal);
 	
