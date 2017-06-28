@@ -4,7 +4,7 @@ queue()
     .await(makeGraphs);
 
 
-
+var selected-datamap;
 
 function makeGraphs(error, projectsJson, statesJson) {	
 	//Clean projectsJson data
@@ -151,8 +151,11 @@ function call_Datamap(){
 			   $("#gdp").css({"font-size":"25px","color":"#777", "float" : "right"});
 			$("#ppp").text('$ ' +gdps[geography.id]['gross domestic product based on purchasing-power-parity (ppp) valuation of country gdp']);
 			   $("#ppp").css({"font-size":"25px","color":"#777", "float" : "right"});	
-			console.log(geography);
-			return '<div class="hoverinfo"><strong>' + geography.properties.name + '</strong></div>';
+			
+			console.log(datamap.svg);
+			console.log(datamap.svg.path);
+			console.log(datamap.svg.path.class(geography.id));
+			selected-datamap = datamap.svg.path.class(geography.id);
 			
 			dc.renderAll();
 				
