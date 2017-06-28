@@ -29,11 +29,27 @@ def donorschoose_projects():
     connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
     collection = connection[DBS_NAME][COLLECTION_NAME]
     projects = collection.find(projection=FIELDS, limit=100000)
-    #projects = collection.find(projection=FIELDS)
+    
     json_projects = []
     for project in projects:
         json_projects.append(project)
-    json_projects = json.dumps(json_projects, default=json_util.default)
+    json_projects = {'donor' : json.dumps(json_projects, default=json_util.default)}
+    
+    
+    MONGODB_HOST = 'localhost'
+    MONGODB_PORT = 27017
+    DBS_NAME = 'datamap'
+    COLLECTION_NAME = 'econFinal'
+    connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
+    collection = connection[DBS_NAME][COLLECTION_NAME]
+    imf = collection.find({}, limit=100000)
+    
+    imf_projects = []
+    for project in imf_projects:
+        imf_projects.append(project)    
+    json_projects = {'imf' : json.dumps(imf_projects, default=json_util.default)}
+    
+    
     connection.close()
     return json_projects
 
