@@ -39,7 +39,9 @@ def donorschoose_projects():
     json_projects = []
     for project in projects:
         json_projects.append(project)
-    json_projects = {'donor' : json.dumps(json_projects, default=json_util.default)}
+    ajson =    json.dumps(json_projects, default=json_util.default)
+    print ajson
+    json_projects = {'donor' : ajson}
     
     
     MONGODB_HOST = 'localhost'
@@ -53,7 +55,10 @@ def donorschoose_projects():
     imf_projects = []
     for project in imf_projects:
         imf_projects.append(project)    
-    json_projects = {'imf' : json.dumps(imf_projects, default=json_util.default)}
+    ajson =    json.dumps(imf_projects, default=json_util.default)
+    print ajson
+    json_projects = {'imf' : ajson}    
+#    json_projects = {'imf' : json.dumps(imf_projects, default=json_util.default)}
     
     
     connection.close()
