@@ -35,13 +35,13 @@ def donorschoose_projects():
     projects = collection.find(projection=FIELDS, limit=100000)
     
     print projects
-    '''
+    
     json_projects = []
     for project in projects:
         json_projects.append(project)
     ajson =    json.dumps(json_projects, default=json_util.default)
     print ajson
-    '''
+    
     json_projects = {'donor' : projects}
     
     
@@ -52,6 +52,7 @@ def donorschoose_projects():
     connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
     collection = connection[DBS_NAME][COLLECTION_NAME]
     imf = collection.find({}, limit=100000)
+    print type(imf)
     '''
     imf_projects = []
     for project in imf_projects:
