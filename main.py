@@ -34,6 +34,8 @@ def donorschoose_projects():
     collection = connection[DBS_NAME][COLLECTION_NAME]
     projects = collection.find(projection=FIELDS, limit=100000)
     
+    print projects
+    
     json_projects = []
     for project in projects:
         json_projects.append(project)
