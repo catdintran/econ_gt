@@ -29,7 +29,7 @@ def donorschoose_projects():
     MONGODB_PORT = connect[1]
     DBS_NAME    = connect[2]
     COLLECTION_NAME = connect[3]
-    
+    FIELDS = connect[4]
     connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
     collection = connection[DBS_NAME][COLLECTION_NAME]
     projects = collection.find(projection=FIELDS, limit=100000)
