@@ -23,7 +23,7 @@ def index():
 
 @app.route("/donorschoose/projects")
 def donorschoose_projects():
-    
+    '''
     connect = getMongo()
     MONGODB_HOST = connect[0]
     MONGODB_PORT = connect[1]
@@ -43,36 +43,20 @@ def donorschoose_projects():
     print ajson
     
     json_projects = {'donor' : projects}
-    
+    '''
     
     MONGODB_HOST = 'localhost'
     MONGODB_PORT = 27017
     DBS_NAME = 'datamap'
-    COLLECTION_NAME = 'econFinal'
-    connection = MongoClient(MONGODB_HOST, MONGODB_PORT)
-    collection = connection[DBS_NAME][COLLECTION_NAME]
-    imf = collection.find({}, limit=100000)
-    print type(imf)
-    '''
-    imf_projects = []
-    for project in imf_projects:
-        imf_projects.append(project)    
-    ajson =    json.dumps(imf_projects, default=json_util.default)
-    print ajson
-    '''
-    json_projects = {'imf' : imf}    
-#    json_projects = {'imf' : json.dumps(imf_projects, default=json_util.default)}
+    COLLECTION_NAME = 'imfAnal'
+    client = MongoClient(MONGODB_HOST, MONGODB_PORT)
+    imfdb = client[DBS_NAME][COLLECTION_NAME]
+    imf = imfdb.find({}, limit=100000)
     
+    imfdata={}
+    for c in imf:
+        imfdata.update(c)
+        
     
-    connection.close()
-    return json_projects
-
-@app.route("/get_gdp")
-def get_gdp():
-    countryId = request.json['id']
-    gdp = gdps[countryId]['gross domestic product, current prices']
-    ppp = gdps[countryId]['gross domestic product based on purchasing-power-parity (ppp) valuation of country gdp']
-    return jsonify({'gdp' : gdp, 'ppp' : ppp})
-    
-if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=5000,debug=True)
+    client.close()
+    return imfdata
