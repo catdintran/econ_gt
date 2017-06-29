@@ -1,6 +1,6 @@
 queue()
     .defer(d3.json, "/donorschoose/projects")
-    .await(makeGraphs)
+ //   .await(makeGraphs)
     .await(call_Datamap);
 
 
@@ -112,9 +112,9 @@ function makeGraphs(error, projectsJson, statesJson) {
 
 
 
-function call_Datamap(error, projectsJson, statesJson){
+function call_Datamap(error, imfdata, statesJson){
 	
-	var imfFinal = projectsJson['imf'];
+	var imfFinal = imfdata;
 	console.log(imfFinal);
 	
 	var ndx = crossfilter(imfFinal);
